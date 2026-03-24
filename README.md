@@ -1,1 +1,3 @@
-# nixos-configurations
+# NixOS Configurations
+
+My personal Nix(OS) configurations
