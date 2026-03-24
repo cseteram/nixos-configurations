@@ -20,5 +20,18 @@
         extraArgs = "--keep 10 --keep-since 7d";
       };
     };
+
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+      vimdiffAlias = true;
+
+      plugins = with pkgs.vimPlugins; [
+        editorconfig-vim
+        fzf-vim
+      ];
+    };
   };
 }
