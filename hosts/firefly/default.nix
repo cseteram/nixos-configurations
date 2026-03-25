@@ -35,7 +35,39 @@
   system = {
     primaryUser = "cseteram";
 
-    # TODO
+    defaults = {
+      NSGlobalDomain = {
+        InitialKeyRepeat = 15;
+        KeyRepeat = 2;
+      };
+      finder = {
+        AppleShowAllExtensions = true;
+        FXPreferredViewStyle = "icnv";
+        NewWindowTarget = "Home";
+        QuitMenuItem = true;
+        ShowPathbar = true;
+        ShowStatusBar = true;
+      };
+      dock = {
+        show-recents = false;
+        persistent-apps = [
+          { app = "/System/Applications/Calendar.app"; }
+          { app = "/System/Applications/Weather.app"; }
+          { app = "/System/Applications/Photos.app"; }
+          { app = "/System/Applications/System Settings.app"; }
+          { app = "/System/Cryptexes/App/System/Applications/Safari.app"; }
+          { app = "/Applications/Discord.app"; }
+          { app = "/Applications/1Password.app"; }
+          { app = "/Applications/Windows App.app"; }
+          { app = "/Users/cseteram/Applications/Home Manager Apps/Alacritty.app"; }
+        ];
+      };
+      screencapture = {
+        location = "/Users/cseteram/Downloads";
+        type = "png";
+        disable-shadow = true;
+      };
+    };
   };
 
   programs = {
