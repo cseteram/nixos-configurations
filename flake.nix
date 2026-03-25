@@ -2,6 +2,11 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,15 +21,30 @@
       url = "github:oddlama/agenix-rekey";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
   };
 
   outputs =
     {
       self,
       nixpkgs,
+      nix-darwin,
       home-manager,
       agenix,
       agenix-rekey,
+      nix-homebrew,
+      homebrew-core,
+      homebrew-cask,
       ...
     }@inputs:
     let
@@ -44,10 +64,21 @@
         };
       };
 
+      darwinConfigurations = {
+        firefly = nix-darwin.lib.darwinSystem {
+          specialArgs = { inherit inputs self; };
+          modules = [
+            ./hosts/firefly
+            home-manager.darwinModules.home-manager
+            nix-homebrew.darwinModules.nix-homebrew
+          ];
+        };
+      };
+
       agenix-rekey = agenix-rekey.configure {
         userFlake = self;
         nixosConfigurations = self.nixosConfigurations;
-        # darwinConfigurations = self.darwinConfigurations or { };
+        darwinConfigurations = self.darwinConfigurations or { };
         agePackage = p: p.age;
       };
     };
