@@ -3,7 +3,12 @@
     stateVersion = "25.11";
 
     shell.enableZshIntegration = true;
+
+    packages = with pkgs; [
+      prismlauncher
+    ];
   };
+
 
   programs = {
     home-manager.enable = true;
