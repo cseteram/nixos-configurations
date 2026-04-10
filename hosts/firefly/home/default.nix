@@ -6,6 +6,7 @@
 
     packages = with pkgs; [
       prismlauncher
+      moonlight-qt
     ];
   };
 
