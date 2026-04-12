@@ -58,8 +58,10 @@
           { app = "/System/Cryptexes/App/System/Applications/Safari.app"; }
           { app = "/Applications/Discord.app"; }
           { app = "/Applications/1Password.app"; }
-          { app = "/Applications/Windows App.app"; }
           { app = "/Users/cseteram/Applications/Home Manager Apps/Alacritty.app"; }
+          { app = "/Applications/Windows App.app"; }
+          { app = "/Users/cseteram/Applications/Home Manager Apps/Moonlight.app"; }
+          { app = "/Users/cseteram/Applications/Home Manager Apps/PrismLauncher.app"; }
         ];
       };
       screencapture = {
