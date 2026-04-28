@@ -83,6 +83,12 @@
     shell = pkgs.zsh;
   };
 
+  fonts = {
+    packages = with pkgs; [
+      nerd-fonts.fira-code
+    ];
+  };
+
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users.cseteram = import ./home;

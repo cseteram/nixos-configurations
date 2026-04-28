@@ -8,8 +8,15 @@
       prismlauncher
       moonlight-qt
     ];
-  };
 
+    file = {
+      p10k = {
+        enable = true;
+        source = ./p10k.zsh;
+        target = ".p10k.zsh";
+      };
+    };
+  };
 
   programs = {
     home-manager.enable = true;
@@ -28,7 +35,12 @@
         };
         window.dynamic_padding = true;
 
-        font.size = 12;
+        font = {
+          normal = {
+            family = "FiraCode Nerd Font";
+          };
+          size = 12;
+        };
       };
     };
 
@@ -84,6 +96,33 @@
       enable = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;
+
+      plugins = [
+        {
+          name = "zsh-powerlevel10k";
+          src = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/";
+          file = "powerlevel10k.zsh-theme";
+        }
+      ];
+
+      initContent = lib.mkMerge [
+        (
+          lib.mkBefore ''
+            if [[ -r "${config.xdg.cacheHome}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+              source "${config.xdg.cacheHome}/p10k-instant-prompt-''${(%):-%n}.zsh"
+            fi
+          ''
+        )
+        (
+          lib.mkAfter ''
+            [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+          ''
+        )
+      ];
+    };
+
+    fzf = {
+      enable = true;
     };
   };
 }
