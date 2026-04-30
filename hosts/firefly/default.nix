@@ -40,6 +40,16 @@
         InitialKeyRepeat = 15;
         KeyRepeat = 2;
       };
+      CustomUserPreferences = {
+        "com.apple.symbolichotkeys" = {
+          AppleSymbolicHotKeys = {
+            # <C-space>
+            "60" = {
+              enabled = false;
+            };
+          };
+        };
+      };
       finder = {
         AppleShowAllExtensions = true;
         FXPreferredViewStyle = "icnv";

@@ -89,6 +89,11 @@
       plugins = with pkgs.vimPlugins; [
         editorconfig-vim
         fzf-vim
+        {
+          plugin = nvim-lspconfig;
+          type = "lua";
+          config = lib.fileContents ./lsp.lua;
+        }
       ];
     };
 
