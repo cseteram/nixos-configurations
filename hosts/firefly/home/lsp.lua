@@ -1,5 +1,9 @@
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
 
+vim.lsp.enable('gopls')
+vim.lsp.enable('rust_analyzer')
+vim.lsp.enable('ts_ls')
+vim.lsp.enable('pyright')
 vim.lsp.enable('terraformls')
 
 vim.keymap.set('i', '<C-space>', '<C-x><C-o>', { noremap = true, silent = true })
