@@ -37,6 +37,14 @@ vim.keymap.set('i','<esc>', function()
   end
 end, { expr = true, noremap = true, silent = true })
 
+vim.keymap.set('n', '[g', function()
+  vim.diagnostic.jump({ count = -1 })
+end, { noremap = true, silent = true })
+
+vim.keymap.set('n', ']g', function()
+  vim.diagnostic.jump({ count = 1 })
+end, { noremap = true, silent = true })
+
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(ev)

@@ -60,11 +60,17 @@
       nix-direnv.enable = true;
     };
 
+    fzf = {
+      enable = true;
+    };
+
     git = {
       enable = true;
       ignores = [
         "*~"
         ".DS_Store"
+        "Thumbs.db"
+        "Desktop.ini"
       ];
     };
 
@@ -86,9 +92,12 @@
       vimAlias = true;
       vimdiffAlias = true;
 
+      extraLuaConfig = (lib.fileContents ./init.lua) + "\n";
+
       plugins = with pkgs.vimPlugins; [
         editorconfig-vim
         fzf-vim
+        vim-airline
         {
           plugin = nvim-lspconfig;
           type = "lua";
@@ -124,10 +133,6 @@
           ''
         )
       ];
-    };
-
-    fzf = {
-      enable = true;
     };
   };
 }
