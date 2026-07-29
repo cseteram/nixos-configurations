@@ -126,6 +126,7 @@
     casks = [
       "discord"
       "sony-ps-remote-play"
+      "tailscale-app"
       "windows-app"
     ];
     masApps = { };
