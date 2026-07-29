@@ -125,6 +125,7 @@
     brews = [ ];
     casks = [
       "discord"
+      "sony-ps-remote-play"
       "windows-app"
     ];
     masApps = { };
