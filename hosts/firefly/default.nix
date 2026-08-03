@@ -40,7 +40,11 @@
         InitialKeyRepeat = 15;
         KeyRepeat = 2;
       };
+
       CustomUserPreferences = {
+        "com.apple.desktopservices" = {
+          DSDontWriteNetworkStores = true;
+        };
         "com.apple.symbolichotkeys" = {
           AppleSymbolicHotKeys = {
             # <C-space>
@@ -50,6 +54,7 @@
           };
         };
       };
+
       finder = {
         AppleShowAllExtensions = true;
         FXPreferredViewStyle = "icnv";
@@ -58,6 +63,7 @@
         ShowPathbar = true;
         ShowStatusBar = true;
       };
+
       dock = {
         show-recents = false;
         persistent-apps = [
@@ -74,6 +80,7 @@
           { app = "/Users/cseteram/Applications/Home Manager Apps/PrismLauncher.app"; }
         ];
       };
+
       screencapture = {
         location = "/Users/cseteram/Downloads";
         type = "png";
